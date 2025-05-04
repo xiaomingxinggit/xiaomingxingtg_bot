@@ -1,8 +1,8 @@
-name: Run Telegram Bot 
+name: Run Telegram Bot Every 10 Seconds (for Testing)
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # UTC 时间每天凌晨 0 点运行
+    - cron: '0,10,20,30,40,50 * * * *'  # 每 10 秒运行一次
   workflow_dispatch:
 
 jobs:
