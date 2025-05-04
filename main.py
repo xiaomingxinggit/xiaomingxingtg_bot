@@ -3,7 +3,11 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 import requests
 import logging
 import asyncio
+import os
 from datetime import datetime
+
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
 
 # 日志配置
 logging.basicConfig(
