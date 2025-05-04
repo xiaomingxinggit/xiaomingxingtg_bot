@@ -49,10 +49,18 @@ async def send_message():
         msg = f"<b>【OKX 最新价格】</b>\n\n"
         for coin, price in prices.items():
             msg += f"{coin}: <code>{price} USDT</code>\n"
+
+        # 创建并启动应用
         application = ApplicationBuilder().token(TOKEN).build()
         await application.initialize()
+        await application.start()  # 启动应用
+
+        # 发送消息
         await application.bot.send_message(chat_id=CHAT_ID, text=msg, parse_mode="HTML")
+
+        # 停止应用
         await application.stop()
+        await application.shutdown()  # 清理资源
         logging.info("✅ 消息已成功发送并完成退出。")
     else:
         logging.warning("❌ 获取币价失败或无数据，请检查网络或 API 状态。")
