@@ -1,8 +1,8 @@
-name: Test Bot (Every 10s)
+name: Test Bot (Every 1 minute)
 
 on:
   schedule:
-    - cron: '0,10,20,30,40,50 * * * *'  # 每 10 秒运行一次
+    - cron: '0 * * * *'  # 每 1 分钟运行一次
   workflow_dispatch:
 
 jobs:
@@ -26,4 +26,4 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
-          python main.py
+          python send_once.py
